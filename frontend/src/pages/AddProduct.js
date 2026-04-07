@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createProductApi } from "../utils/api";
+
 import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
