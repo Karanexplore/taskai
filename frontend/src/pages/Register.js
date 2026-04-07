@@ -65,7 +65,7 @@ function Register() {
           <button type="submit">Register</button>
         </form>
 
-        <p>
+        <p className="auth-switch-text">
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
@@ -74,3 +74,4 @@ function Register() {
 }
 
 export default Register;
+

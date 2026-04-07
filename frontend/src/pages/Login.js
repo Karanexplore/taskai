@@ -59,7 +59,7 @@ function Login() {
           <button type="submit">Login</button>
         </form>
 
-        <p>
+        <p className="auth-switch-text">
           Don’t have an account? <Link to="/register">Register</Link>
         </p>
       </div>

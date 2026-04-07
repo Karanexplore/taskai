@@ -5,7 +5,7 @@ import { getProducts } from "../store/productSlice";
 import Hero from "../components/Hero";
 import ProductSection from "../components/ProductSection";
 import DressStyle from "../components/DressStyle";
-import Newsletter from "../components/Newsletter";
+// import Newsletter from "../components/Newsletter";
 import Loader from "../components/Loader";
 
 function Home() {
@@ -42,7 +42,7 @@ function Home() {
       />
 
       <DressStyle />
-      <Newsletter />
+      {/* <Newsletter /> */}
     </>
   );
 }

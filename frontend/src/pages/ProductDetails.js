@@ -57,61 +57,78 @@ function ProductDetails() {
 
   const user = localStorage.getItem("token");
 
-  if (!product) return <h2 className="container">Loading...</h2>;
+  if (!product) return <h2 className="loader">Loading...</h2>;
 
   return (
-    <div className="container details-page">
-      <div className="details-layout">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="details-image"
-        />
-
-        <div className="details-content">
-          <h1>{product.name}</h1>
-          <p className="details-desc">{product.description}</p>
-
-          <div className="product-price-box">
-            <span className="discount-price">${product.discountPrice}</span>
-            {product.price && (
-              <span className="original-price">${product.price}</span>
-            )}
+    <div className="product-detail-page">
+      <div className="container">
+        <div className="product-detail-card">
+          {/* LEFT IMAGE */}
+          <div className="product-detail-image-wrap">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="product-detail-image"
+            />
           </div>
 
-          <p className="details-rating">⭐ {product.rating}</p>
-          <p className="details-reviews">Reviews: {product.reviews || 120}</p>
+          {/* RIGHT CONTENT */}
+          <div className="product-detail-content">
+            <p className="product-detail-label">SHOP.CO PRODUCT</p>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "15px",
-              flexWrap: "wrap",
-              marginTop: "20px",
-            }}
-          >
-            <button className="shop-btn" onClick={handleAddToCart}>
-              Add To Cart
-            </button>
+            <h1>{product.name}</h1>
 
-            {user && (
-              <>
-                <button
-                  className="shop-btn"
-                  onClick={() => navigate(`/admin/edit-product/${product._id}`)}
-                >
-                  Edit Product
-                </button>
+            <p className="product-detail-desc">
+              {product.description || "Premium quality fashion product with a stylish and modern design."}
+            </p>
 
-                <button
-                  className="shop-btn"
-                  onClick={handleDelete}
-                  style={{ background: "red", color: "#fff" }}
-                >
-                  Delete Product
-                </button>
-              </>
-            )}
+            <div className="product-detail-price-box">
+              <span className="product-detail-discount">
+                ${product.discountPrice || product.price}
+              </span>
+
+              {product.price && product.discountPrice && (
+                <span className="product-detail-original">
+                  ${product.price}
+                </span>
+              )}
+            </div>
+
+            <div className="product-detail-meta">
+              <p className="product-detail-rating">⭐ {product.rating || 4.5}</p>
+              <p className="product-detail-reviews">
+                Reviews: {product.reviews || 120}
+              </p>
+            </div>
+
+            <div className="product-detail-btn-group">
+              <button
+                className="product-detail-btn add-btn"
+                onClick={handleAddToCart}
+              >
+                Add To Cart
+              </button>
+
+              {user && (
+                <>
+                  <button
+                    className="product-detail-btn edit-btn"
+                    onClick={() =>
+                      navigate(`/admin/edit-product/${product._id}`)
+                    }
+                  >
+                    Edit Product
+                  </button>
+
+                  <button
+                    className="product-detail-btn delete-btn"
+                    onClick={handleDelete}
+                  >
+                    Delete Product
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
